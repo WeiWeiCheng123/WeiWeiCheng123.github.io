@@ -246,87 +246,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://weiweicheng123.github.io/2022/02/22/docker_note1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Wei">
-      <meta itemprop="description" content="分享自己的所見所聞，紀錄生活雜事、感想和一些技術筆記">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WeiWei's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/22/docker_note1/" class="post-title-link" itemprop="url">使用Docker後的注意事項</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-02-22 21:19:01 / Modified: 22:18:57" itemprop="dateCreated datePublished" datetime="2022-02-22T21:19:01+08:00">2022-02-22</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Postgres/" itemprop="url" rel="index"><span itemprop="name">Postgres</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Postgres/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>前陣子使用到Docker上的PostgreSQL來當作我目前開發的應用的Database</p>
-<p>在自己的筆電上都運行的好好的沒什麼事，結果隔天到實驗室之後想說用實驗室的電腦測試卻出現了Error</p>
-<p>心想: <strong>哭啊 出事了阿伯</strong></p>
-<p>時間又過了兩天，我在我的工作管理員發現了本地端的Postgres一直偷偷的在背後執行</p>
-<p>再看看自己的docker compose file</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">postgres:</span><br><span class="line">  container_name: &#x27;postgres&#x27;</span><br><span class="line">  image: postgres</span><br><span class="line">  ports:</span><br><span class="line">    - &quot;5432:5432&quot; </span><br></pre></td></tr></table></figure>
-
-<p>發現問題出在ports的部分，因為postgres 初始的 port 是在5432，如果在docker上也是listen在同一個port就會發生衝突</p>
-<p>解決這個問題的辦法有兩個，一個是把本地端的Postgres刪掉，一個是把compose file的port改掉</p>
-<p>不過我自己因為太氣所以就直接把本地端的Postgres給砍了就是了XD</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://weiweicheng123.github.io/2022/02/22/docker-note/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -608,7 +527,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

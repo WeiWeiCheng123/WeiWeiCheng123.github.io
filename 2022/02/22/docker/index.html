@@ -22,7 +22,7 @@
 
   <meta name="description" content="Docker 是一個可以讓你的應用跑在虛擬系統上的應用程式 像是當你需要在程式裡與MySQL連線的話，往往你會需要下載MySQL在你自己的OS系統，假如你的程式要給別人用或進行測試的話，他們也會需要去下載MySQL，可想而知這不是一個輕鬆的事情，而且往往會有 在自己的電腦程式跑的超好，表現超棒，換到別人的電腦後直接原地死亡 的尷尬情況 而 Docker 可以避免掉繁瑣的安裝流程，讓應用程式都運行">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Docker 你好 請問你是?">
+<meta property="og:title" content="Hello Docker">
 <meta property="og:url" content="https://weiweicheng123.github.io/2022/02/22/docker/index.html">
 <meta property="og:site_name" content="WeiWei&#39;s Blog">
 <meta property="og:description" content="Docker 是一個可以讓你的應用跑在虛擬系統上的應用程式 像是當你需要在程式裡與MySQL連線的話，往往你會需要下載MySQL在你自己的OS系統，假如你的程式要給別人用或進行測試的話，他們也會需要去下載MySQL，可想而知這不是一個輕鬆的事情，而且往往會有 在自己的電腦程式跑的超好，表現超棒，換到別人的電腦後直接原地死亡 的尷尬情況 而 Docker 可以避免掉繁瑣的安裝流程，讓應用程式都運行">
@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://weiweicheng123.github.io/assets/docker_cmd.jpg">
 <meta property="og:image" content="https://weiweicheng123.github.io/assets/redis.jpg">
 <meta property="article:published_time" content="2022-02-22T14:40:01.000Z">
-<meta property="article:modified_time" content="2022-02-22T14:18:38.426Z">
+<meta property="article:modified_time" content="2022-02-26T11:12:47.296Z">
 <meta property="article:author" content="Wei">
 <meta property="article:tag" content="Docker">
 <meta name="twitter:card" content="summary">
@@ -50,7 +50,7 @@
   };
 </script>
 
-  <title>Docker 你好 請問你是? | WeiWei's Blog</title>
+  <title>Hello Docker | WeiWei's Blog</title>
   
 
 
@@ -188,7 +188,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Docker 你好 請問你是?
+          Hello Docker
         </h1>
 
         <div class="post-meta">
@@ -197,10 +197,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-02-22 22:40:01 / Modified: 22:18:38" itemprop="dateCreated datePublished" datetime="2022-02-22T22:40:01+08:00">2022-02-22</time>
+              <time title="Created: 2022-02-22 22:40:01" itemprop="dateCreated datePublished" datetime="2022-02-22T22:40:01+08:00">2022-02-22</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-02-26 19:12:47" itemprop="dateModified" datetime="2022-02-26T19:12:47+08:00">2022-02-26</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -229,13 +235,13 @@
 <span id="more"></span>
 <h2 id="安裝Docker"><a href="#安裝Docker" class="headerlink" title="安裝Docker"></a>安裝Docker</h2><p>官方安裝網址 <a target="_blank" rel="noopener" href="https://www.docker.com/products/docker-desktop">https://www.docker.com/products/docker-desktop</a></p>
 <h2 id="Hello-Docker"><a href="#Hello-Docker" class="headerlink" title="Hello Docker"></a>Hello Docker</h2><p>安裝完成之後在自己的Terminal打上docker應該會就跳出<br><img src="/../assets/docker_cmd.jpg"></p>
-<p>當成功出現這個畫面之後，恭喜! 你可以開始和Docker培養感情了XD</p>
-<h2 id="Docker-image"><a href="#Docker-image" class="headerlink" title="Docker image"></a>Docker image</h2><p>Docker image 可以想成是一個應用，它可以是MySQL, Postgres, nginx, golang之類的</p>
-<p>這個連結是官方用來放置Docker image的網站 <a target="_blank" rel="noopener" href="https://hub.docker.com/">https://hub.docker.com/</a></p>
-<p>以MongoDB為例，在docker hub上搜尋 mongo，就可以看到mongo的image</p>
+<p>當成功出現這個畫面之後，恭喜! 你可以開始和 Docker 培養感情了XD</p>
+<h2 id="Docker-image"><a href="#Docker-image" class="headerlink" title="Docker image"></a>Docker image</h2><p>Docker image 可以想成是一個應用，它可以是 MySQL, Postgres, nginx, golang 之類的</p>
+<p>這個連結是官方用來放置 Docker image 的網站 <a target="_blank" rel="noopener" href="https://hub.docker.com/">https://hub.docker.com/</a></p>
+<p>以redis為例，在docker hub上搜尋 redis，就可以看到 redis 的 image</p>
 <p>點進去可以看到<br><img src="/../assets/redis.jpg"><br>在Terminal輸入 <code>docker pull redis</code></p>
 <p>Note: 在image name後面加上 :Tag 可以選擇版本 EX: <code>docker pull redis:7.0-rc1</code> 不輸入Tag代表使用最新的版本</p>
-<p>下載完成後輸入 <code>docker image ls</code> 可以列出目前已經下載的image</p>
+<p>下載完成後輸入 <code>docker image ls</code> 可以列出目前已經下載的 image</p>
 <p>像是</p>
 <table>
 <thead>
@@ -256,6 +262,12 @@
 </tr>
 </tbody></table>
 <p>當你下載了之後不喜歡，或是覺得用不到了可以使用 <code>docker rmi [image name/ image ID]</code> 去移除掉</p>
+<h2 id="Docker-container"><a href="#Docker-container" class="headerlink" title="Docker container"></a>Docker container</h2><p>當你決定好要用哪一個image當作應用的時候就可以使用 <code>docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]</code></p>
+<p>最簡單就像是 <code>docker run -d redis</code></p>
+<p>透過docker run 去執行 redis image</p>
+<p>想要停止或是想要從停止的狀態開啟這個 container 的時候可以使用<br><code>docker stop/start container ID/name</code></p>
+<p>當今天要移除不想要用的 Container 可以執行 <code>docker rm Container ID/Name</code></p>
+<p><strong>這篇的介紹就先到這邊，這只是一個非常簡單的介紹和應用，之後有時間會更深入地去介紹如何將自己開發的專案透過Dockerfile包裝成屬於自己的image，以及透過docker-compose去一鍵安裝並執行所有自己需要的Container</strong></p>
 
     </div>
 
@@ -274,8 +286,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/02/22/docker-note/" rel="prev" title="使用Docker後的注意事項">
-      <i class="fa fa-chevron-left"></i> 使用Docker後的注意事項
+    <a href="/2022/02/22/docker1/" rel="prev" title="Docker 你好 請問你是?">
+      <i class="fa fa-chevron-left"></i> Docker 你好 請問你是?
     </a></div>
       <div class="post-nav-item"></div>
     </div>
@@ -336,7 +348,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%9DDocker"><span class="nav-number">1.</span> <span class="nav-text">安裝Docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hello-Docker"><span class="nav-number">2.</span> <span class="nav-text">Hello Docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-image"><span class="nav-number">3.</span> <span class="nav-text">Docker image</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%9DDocker"><span class="nav-number">1.</span> <span class="nav-text">安裝Docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hello-Docker"><span class="nav-number">2.</span> <span class="nav-text">Hello Docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-image"><span class="nav-number">3.</span> <span class="nav-text">Docker image</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-container"><span class="nav-number">4.</span> <span class="nav-text">Docker container</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -350,20 +362,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

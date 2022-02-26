@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://weiweicheng123.github.io/assets/docker_cmd.jpg">
 <meta property="og:image" content="https://weiweicheng123.github.io/assets/redis.jpg">
 <meta property="article:published_time" content="2022-02-22T14:40:01.000Z">
-<meta property="article:modified_time" content="2022-02-26T11:12:47.296Z">
+<meta property="article:modified_time" content="2022-02-26T12:28:11.190Z">
 <meta property="article:author" content="Wei">
 <meta property="article:tag" content="Docker">
 <meta name="twitter:card" content="summary">
@@ -142,11 +142,6 @@
     <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
 
   </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
-
-  </li>
   </ul>
 </nav>
 
@@ -205,7 +200,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-02-26 19:12:47" itemprop="dateModified" datetime="2022-02-26T19:12:47+08:00">2022-02-26</time>
+                <time title="Modified: 2022-02-26 20:28:11" itemprop="dateModified" datetime="2022-02-26T20:28:11+08:00">2022-02-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -268,6 +263,9 @@
 <p>想要停止或是想要從停止的狀態開啟這個 container 的時候可以使用<br><code>docker stop/start container ID/name</code></p>
 <p>當今天要移除不想要用的 Container 可以執行 <code>docker rm Container ID/Name</code></p>
 <p><strong>這篇的介紹就先到這邊，這只是一個非常簡單的介紹和應用，之後有時間會更深入地去介紹如何將自己開發的專案透過Dockerfile包裝成屬於自己的image，以及透過docker-compose去一鍵安裝並執行所有自己需要的Container</strong></p>
+<hr>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://hub.docker.com/_/redis">https://hub.docker.com/_/redis</a></p>
+<p><a target="_blank" rel="noopener" href="https://youtu.be/3c-iBn73dDE">https://youtu.be/3c-iBn73dDE</a></p>
 
     </div>
 
@@ -286,10 +284,13 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/02/22/docker1/" rel="prev" title="Docker 你好 請問你是?">
-      <i class="fa fa-chevron-left"></i> Docker 你好 請問你是?
+    <a href="/2022/02/22/docker-note/" rel="prev" title="使用Docker後的注意事項">
+      <i class="fa fa-chevron-left"></i> 使用Docker後的注意事項
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2022/02/26/ab-test/" rel="next" title="幫自己的網站進行壓力測試吧">
+      幫自己的網站進行壓力測試吧 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -348,7 +349,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%9DDocker"><span class="nav-number">1.</span> <span class="nav-text">安裝Docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hello-Docker"><span class="nav-number">2.</span> <span class="nav-text">Hello Docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-image"><span class="nav-number">3.</span> <span class="nav-text">Docker image</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-container"><span class="nav-number">4.</span> <span class="nav-text">Docker container</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%9DDocker"><span class="nav-number">1.</span> <span class="nav-text">安裝Docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hello-Docker"><span class="nav-number">2.</span> <span class="nav-text">Hello Docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-image"><span class="nav-number">3.</span> <span class="nav-text">Docker image</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-container"><span class="nav-number">4.</span> <span class="nav-text">Docker container</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number"></span> <span class="nav-text">Reference</span></a></div>
       </div>
       <!--/noindex-->
 
@@ -360,22 +361,21 @@
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">8</span>
+          <a href="/archives">
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

@@ -20,31 +20,35 @@
     var CONFIG = {"hostname":"weiweicheng123.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="分享自己的所見所聞，紀錄生活雜事、感想和一些技術筆記">
-<meta property="og:type" content="website">
-<meta property="og:title" content="WeiWei&#39;s Blog">
-<meta property="og:url" content="https://weiweicheng123.github.io/index.html">
+  <meta name="description" content="當今天寫好了一個網站之後，通常都需要測試一下自己網站的性能，尤其是現在網頁後端基本都會跟著一個以上的Database，這時候就會擔心自己的網頁會不會因為一瞬間的大流量而導致系統整個炸開 Apache Bench (AB)ab是apache自帶的壓力測試工具，非常的簡單好用，用來測試server的執行效能 安裝Apache Bench Windows   使用Windows系統的話透過Apache官">
+<meta property="og:type" content="article">
+<meta property="og:title" content="幫自己的網站進行壓力測試吧">
+<meta property="og:url" content="https://weiweicheng123.github.io/2022/02/26/ab-test/index.html">
 <meta property="og:site_name" content="WeiWei&#39;s Blog">
-<meta property="og:description" content="分享自己的所見所聞，紀錄生活雜事、感想和一些技術筆記">
+<meta property="og:description" content="當今天寫好了一個網站之後，通常都需要測試一下自己網站的性能，尤其是現在網頁後端基本都會跟著一個以上的Database，這時候就會擔心自己的網頁會不會因為一瞬間的大流量而導致系統整個炸開 Apache Bench (AB)ab是apache自帶的壓力測試工具，非常的簡單好用，用來測試server的執行效能 安裝Apache Bench Windows   使用Windows系統的話透過Apache官">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-02-26T11:17:32.000Z">
+<meta property="article:modified_time" content="2022-02-26T12:27:02.881Z">
 <meta property="article:author" content="Wei">
-<meta property="article:tag" content="後端,Python,Golang,C&#x2F;C++,Database">
+<meta property="article:tag" content="Apache">
+<meta property="article:tag" content="壓力測試">
+<meta property="article:tag" content="AB Test">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://weiweicheng123.github.io/">
+<link rel="canonical" href="https://weiweicheng123.github.io/2022/02/26/ab-test/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>WeiWei's Blog</title>
+  <title>幫自己的網站進行壓力測試吧 | WeiWei's Blog</title>
   
 
 
@@ -157,9 +161,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
@@ -175,10 +180,9 @@
       <meta itemprop="name" content="WeiWei's Blog">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/26/ab-test/" class="post-title-link" itemprop="url">幫自己的網站進行壓力測試吧</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          幫自己的網站進行壓力測試吧
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -215,7 +219,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>當今天寫好了一個網站之後，通常都需要測試一下自己網站的性能，尤其是現在網頁後端基本都會跟著一個以上的Database，這時候就會擔心自己的網頁會不會因為一瞬間的大流量而導致系統整個炸開</p>
+        <p>當今天寫好了一個網站之後，通常都需要測試一下自己網站的性能，尤其是現在網頁後端基本都會跟著一個以上的Database，這時候就會擔心自己的網頁會不會因為一瞬間的大流量而導致系統整個炸開</p>
 <h1 id="Apache-Bench-AB"><a href="#Apache-Bench-AB" class="headerlink" title="Apache Bench (AB)"></a>Apache Bench (AB)</h1><p>ab是apache自帶的壓力測試工具，非常的簡單好用，用來測試server的執行效能</p>
 <h1 id="安裝Apache-Bench"><a href="#安裝Apache-Bench" class="headerlink" title="安裝Apache Bench"></a>安裝Apache Bench</h1><ul>
 <li><p>Windows</p>
@@ -298,248 +302,35 @@
 <hr>
 <h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://httpd.apache.org/docs/2.4/programs/ab.html">https://httpd.apache.org/docs/2.4/programs/ab.html</a></p>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/Apache/" rel="tag"># Apache</a>
+              <a href="/tags/%E5%A3%93%E5%8A%9B%E6%B8%AC%E8%A9%A6/" rel="tag"># 壓力測試</a>
+              <a href="/tags/AB-Test/" rel="tag"># AB Test</a>
+          </div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://weiweicheng123.github.io/2022/02/22/docker/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Wei">
-      <meta itemprop="description" content="分享自己的所見所聞，紀錄生活雜事、感想和一些技術筆記">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WeiWei's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/22/docker/" class="post-title-link" itemprop="url">Hello Docker</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-02-22 22:40:01" itemprop="dateCreated datePublished" datetime="2022-02-22T22:40:01+08:00">2022-02-22</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-02-26 20:28:11" itemprop="dateModified" datetime="2022-02-26T20:28:11+08:00">2022-02-26</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="/../assets/docker.jpeg" alt="docker"></p>
-<p>Docker 是一個可以讓你的應用跑在虛擬系統上的應用程式</p>
-<p>像是當你需要在程式裡與MySQL連線的話，往往你會需要下載MySQL在你自己的OS系統<br>，假如你的程式要給別人用或進行測試的話，他們也會需要去下載MySQL，可想而知這不是一個輕鬆的事情，而且往往會有 <strong>在自己的電腦程式跑的超好，表現超棒，換到別人的電腦後直接原地死亡</strong> 的尷尬情況</p>
-<p>而 Docker 可以避免掉繁瑣的安裝流程，讓應用程式都運行在容器 (Container) 上，就算現在換到別人的電腦上也不會出現問題</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/02/22/docker/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://weiweicheng123.github.io/2022/02/22/docker-note/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Wei">
-      <meta itemprop="description" content="分享自己的所見所聞，紀錄生活雜事、感想和一些技術筆記">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WeiWei's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/22/docker-note/" class="post-title-link" itemprop="url">使用Docker後的注意事項</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-02-22 21:19:01 / Modified: 22:19:33" itemprop="dateCreated datePublished" datetime="2022-02-22T21:19:01+08:00">2022-02-22</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Postgres/" itemprop="url" rel="index"><span itemprop="name">Postgres</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Postgres/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>前陣子使用到Docker上的PostgreSQL來當作我目前開發的應用的Database</p>
-<p>在自己的筆電上都運行的好好的沒什麼事，結果隔天到實驗室之後想說用實驗室的電腦測試卻出現了Error</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/02/22/docker-note/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/02/22/docker/" rel="prev" title="Hello Docker">
+      <i class="fa fa-chevron-left"></i> Hello Docker
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://weiweicheng123.github.io/2022/02/22/Hello-my-blog/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Wei">
-      <meta itemprop="description" content="分享自己的所見所聞，紀錄生活雜事、感想和一些技術筆記">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WeiWei's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/22/Hello-my-blog/" class="post-title-link" itemprop="url">Hello my blog</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-02-22 19:16:40 / Modified: 20:37:48" itemprop="dateCreated datePublished" datetime="2022-02-22T19:16:40+08:00">2022-02-22</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>這是我第一次使用Hexo去架設Blog，目前希望能周更囉XD</p>
-<p>用markdown有一種親切的感覺</p>
-<p>參考資料: </p>
-<p><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10236742">https://ithelp.ithome.com.tw/articles/10236742</a></p>
-<p><a target="_blank" rel="noopener" href="https://kemushi54.github.io/2019/04/01/%E7%AD%86%E8%A8%98-%E6%89%93%E9%80%A0%E8%87%AA%E5%B7%B1%E7%9A%84-blog%EF%BC%8CHexo-Github-%E4%B9%8B%E4%BA%8C/">https://kemushi54.github.io/2019/04/01/%E7%AD%86%E8%A8%98-%E6%89%93%E9%80%A0%E8%87%AA%E5%B7%B1%E7%9A%84-blog%EF%BC%8CHexo-Github-%E4%B9%8B%E4%BA%8C/</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
@@ -592,6 +383,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Apache-Bench-AB"><span class="nav-number">1.</span> <span class="nav-text">Apache Bench (AB)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%9DApache-Bench"><span class="nav-number">2.</span> <span class="nav-text">安裝Apache Bench</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Apache-Bench"><span class="nav-number">3.</span> <span class="nav-text">使用Apache Bench</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B5%90%E6%9E%9C"><span class="nav-number">4.</span> <span class="nav-text">結果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

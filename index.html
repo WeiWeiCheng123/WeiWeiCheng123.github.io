@@ -188,7 +188,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2022-02-26 19:17:32 / Modified: 20:27:02" itemprop="dateCreated datePublished" datetime="2022-02-26T19:17:32+08:00">2022-02-26</time>
+              <time title="Created: 2022-02-26 19:17:32 / Modified: 21:13:27" itemprop="dateCreated datePublished" datetime="2022-02-26T19:17:32+08:00">2022-02-26</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -216,88 +216,14 @@
 
       
           <p>當今天寫好了一個網站之後，通常都需要測試一下自己網站的性能，尤其是現在網頁後端基本都會跟著一個以上的Database，這時候就會擔心自己的網頁會不會因為一瞬間的大流量而導致系統整個炸開</p>
-<h1 id="Apache-Bench-AB"><a href="#Apache-Bench-AB" class="headerlink" title="Apache Bench (AB)"></a>Apache Bench (AB)</h1><p>ab是apache自帶的壓力測試工具，非常的簡單好用，用來測試server的執行效能</p>
-<h1 id="安裝Apache-Bench"><a href="#安裝Apache-Bench" class="headerlink" title="安裝Apache Bench"></a>安裝Apache Bench</h1><ul>
-<li><p>Windows</p>
-<p>  使用Windows系統的話透過Apache官網進行下載<br>  <a target="_blank" rel="noopener" href="https://www.apachelounge.com/download/">https://www.apachelounge.com/download/</a><br>  安裝完成後透過cmd cd 到資料夾裡面的<strong>bin</strong></p>
-<p>  輸入ab就可以開始使用了</p>
-</li>
-<li><p>Linux</p>
-<p>  在Ubuntu可以直接透過apt-get來安裝</p>
-<p>  <code>apt-get update</code></p>
-<p>  <code>apt-get install apache2-utils</code></p>
-</li>
-</ul>
-<h1 id="使用Apache-Bench"><a href="#使用Apache-Bench" class="headerlink" title="使用Apache Bench"></a>使用Apache Bench</h1><p>使用AB最簡單的方式就是輸入 <code>ab &lt;url&gt;</code></p>
-<p>例如 <code>ab https://www.google.com/</code></p>
-<p>但是這樣並沒辦法做到壓力測試的效果</p>
-<p>於是透過ab -h 來查看ab的使用方式</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">-n requests     Number of requests to perform</span><br><span class="line">-c concurrency  Number of multiple requests to make at a time</span><br><span class="line">-t timelimit    Seconds to max. to spend on benchmarking</span><br><span class="line">                This implies -n 50000</span><br><span class="line">-s timeout      Seconds to max. wait for each response</span><br><span class="line">                Default is 30 seconds</span><br><span class="line">-b windowsize   Size of TCP send/receive buffer, in bytes</span><br><span class="line">-B address      Address to bind to when making outgoing connections</span><br><span class="line">-p postfile     File containing data to POST. Remember also to set -T</span><br><span class="line">-u putfile      File containing data to PUT. Remember also to set -T</span><br><span class="line">-T content-type Content-type header to use for POST/PUT data, eg.</span><br><span class="line">                &#x27;application/x-www-form-urlencoded&#x27;</span><br><span class="line">                Default is &#x27;text/plain&#x27;</span><br><span class="line">-v verbosity    How much troubleshooting info to print</span><br><span class="line">-w              Print out results in HTML tables</span><br><span class="line">-i              Use HEAD instead of GET</span><br><span class="line">-x attributes   String to insert as table attributes</span><br><span class="line">-y attributes   String to insert as tr attributes</span><br><span class="line">-z attributes   String to insert as td or th attributes</span><br><span class="line">-C attribute    Add cookie, eg. &#x27;Apache=1234&#x27;. (repeatable)</span><br><span class="line">-H attribute    Add Arbitrary header line, eg. &#x27;Accept-Encoding: gzip&#x27;</span><br><span class="line">                Inserted after all normal header lines. (repeatable)</span><br><span class="line">-A attribute    Add Basic WWW Authentication, the attributes</span><br><span class="line">                are a colon separated username and password.</span><br><span class="line">-P attribute    Add Basic Proxy Authentication, the attributes</span><br><span class="line">                are a colon separated username and password.</span><br><span class="line">-X proxy:port   Proxyserver and port number to use</span><br><span class="line">-V              Print version number and exit</span><br><span class="line">-k              Use HTTP KeepAlive feature</span><br><span class="line">-d              Do not show percentiles served table.</span><br><span class="line">-S              Do not show confidence estimators and warnings.</span><br><span class="line">-q              Do not show progress when doing more than 150 requests</span><br><span class="line">-l              Accept variable document length (use this for dynamic pages)</span><br><span class="line">-g filename     Output collected data to gnuplot format file.</span><br><span class="line">-e filename     Output CSV file with percentages served</span><br><span class="line">-r              Don&#x27;t exit on socket receive errors.</span><br><span class="line">-m method       Method name</span><br><span class="line">-h              Display usage information (this message)</span><br></pre></td></tr></table></figure>
-<p>其中最常用的就是 -n -c -p -T</p>
-<ul>
-<li><p>-n : 測試的總請求數</p>
-</li>
-<li><p>-c : 併發的數量，就是模擬一次執行下有多少位使用者同時使用</p>
-</li>
-<li><p>-p : 當需要測試到post的時候，可以先將資料放入json&#x2F;txt file 再透過-p &lt; file name &gt; 來傳輸資料</p>
-</li>
-<li><p>-T : 用來定義POST的data為和</p>
-<p>  像是 <code>-T &#39;application/x-www-form-urlencoded&#39;</code></p>
-</li>
-</ul>
-<p>假如要對google傳入總共20筆的Request 並模擬4位使用者同時</p>
-<p><code>ab -n 20 -c 4 https://www.google.com</code></p>
-<h1 id="結果"><a href="#結果" class="headerlink" title="結果"></a>結果</h1><p>執行完剛剛的指令之後會得到以下的結果</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">Server Software:        gws</span><br><span class="line">Server Hostname:        www.google.com</span><br><span class="line">Server Port:            443</span><br><span class="line">SSL/TLS Protocol:       TLSv1.2,ECDHE-ECDSA-CHACHA20-POLY1305,256,256</span><br><span class="line">Server Temp Key:        X25519 253 bits</span><br><span class="line">TLS Server Name:        www.google.com</span><br><span class="line"></span><br><span class="line">Document Path:          /</span><br><span class="line">Document Length:        14570 bytes</span><br><span class="line"></span><br><span class="line">Concurrency Level:      4</span><br><span class="line">Time taken for tests:   1.626 seconds</span><br><span class="line">Complete requests:      20</span><br><span class="line">Failed requests:        19</span><br><span class="line">   (Connect: 0, Receive: 0, Length: 19, Exceptions: 0)</span><br><span class="line">Total transferred:      309371 bytes</span><br><span class="line">HTML transferred:       291831 bytes</span><br><span class="line">Requests per second:    12.30 [#/sec] (mean)</span><br><span class="line">Time per request:       325.130 [ms] (mean)</span><br><span class="line">Time per request:       81.283 [ms] (mean, across all concurrent requests)</span><br><span class="line">Transfer rate:          185.85 [Kbytes/sec] received</span><br><span class="line"></span><br><span class="line">Connection Times (ms)</span><br><span class="line">              min  mean[+/-sd] median   max</span><br><span class="line">Connect:       16   92 226.5     47    1053</span><br><span class="line">Processing:    47   62  11.7     63      88</span><br><span class="line">Waiting:       31   56  11.3     62      73</span><br><span class="line">Total:         78  154 230.4    104    1131</span><br><span class="line"></span><br><span class="line">Percentage of the requests served within a certain time (ms)</span><br><span class="line">  50%    104</span><br><span class="line">  66%    109</span><br><span class="line">  75%    110</span><br><span class="line">  80%    120</span><br><span class="line">  90%    125</span><br><span class="line">  95%   1131</span><br><span class="line">  98%   1131</span><br><span class="line">  99%   1131</span><br><span class="line"> 100%   1131 (longest request)</span><br></pre></td></tr></table></figure>
-<p>其中有幾項是比較重要的指標</p>
-<ul>
-<li><p>Concurrency Level</p>
-<p>  同時進行測試的數量</p>
-</li>
-<li><p>Time taken for tests </p>
-<p>  這個測試執行的總時間</p>
-</li>
-<li><p>Complete request </p>
-<p>  完成的請求數</p>
-</li>
-<li><p>Failed requests</p>
-<p>  失敗的請求數</p>
-</li>
-<li><p><strong>Requests per second</strong></p>
-<p>  每秒可以回應多少的請求，一個重要的指標之一</p>
-</li>
-<li><p>Time per request</p>
-<p>  平均每個請求的時間</p>
-</li>
-<li><p>Time per request</p>
-<p>  平均每個請求的時間，所有同時連線數的平均值</p>
-</li>
-<li><p>Connection Times (ms) 連線處理時間</p>
-<ul>
-<li>橫軸<ul>
-<li>min 最小值</li>
-<li>mean 平均值</li>
-<li>+&#x2F;- sd 標準差</li>
-<li>median 中位數</li>
-<li>max 最大值</li>
-</ul>
-</li>
-<li>縱軸<ul>
-<li>Connect 連線的時間</li>
-<li>Processing 處理回應的時間</li>
-<li>Waiting 等待的時間</li>
-<li>Total 連線加處理的時間</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>Percentage of the requests served within a certain time (ms) 每個請求處理的時間分布</p>
-</li>
-</ul>
-<p><strong>以上是簡單的介紹AB的基礎用法，一個蠻好用的工具可以用來測試自己的後端API，透過這個基礎的概念往後也可以在裡面多加入一些OPTION來符合自己測試的需求</strong></p>
-<hr>
-<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://httpd.apache.org/docs/2.4/programs/ab.html">https://httpd.apache.org/docs/2.4/programs/ab.html</a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/02/26/ab-test/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 

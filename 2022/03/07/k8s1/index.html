@@ -20,18 +20,23 @@
     var CONFIG = {"hostname":"weiweicheng123.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="分享自己的所見所聞，紀錄生活雜事、感想和一些技術筆記">
-<meta property="og:type" content="website">
-<meta property="og:title" content="WeiWei&#39;s Blog">
-<meta property="og:url" content="https://weiweicheng123.github.io/tags/SQL/index.html">
+  <meta name="description" content="Kubernetes初探根據Kubernetes網站上所描述的  Kubernetes, also known as K8s, is an open-source system for automating deployment, scaling, and management of containerized applications.  Kubernetes 又名 K8s，是一個管理Micr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hello Kubernetes">
+<meta property="og:url" content="https://weiweicheng123.github.io/2022/03/07/k8s1/index.html">
 <meta property="og:site_name" content="WeiWei&#39;s Blog">
-<meta property="og:description" content="分享自己的所見所聞，紀錄生活雜事、感想和一些技術筆記">
+<meta property="og:description" content="Kubernetes初探根據Kubernetes網站上所描述的  Kubernetes, also known as K8s, is an open-source system for automating deployment, scaling, and management of containerized applications.  Kubernetes 又名 K8s，是一個管理Micr">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://weiweicheng123.github.io/assets/k8s.png#pic_center">
+<meta property="article:published_time" content="2022-03-07T12:40:01.000Z">
+<meta property="article:modified_time" content="2022-03-07T15:38:30.386Z">
 <meta property="article:author" content="Wei">
-<meta property="article:tag" content="後端,Python,Golang,C&#x2F;C++,Database">
+<meta property="article:tag" content="Kubernetes">
+<meta property="article:tag" content="Docker">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://weiweicheng123.github.io/assets/k8s.png#pic_center">
 
-<link rel="canonical" href="https://weiweicheng123.github.io/tags/SQL/">
+<link rel="canonical" href="https://weiweicheng123.github.io/2022/03/07/k8s1/">
 
 
 <script id="page-configurations">
@@ -39,12 +44,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>Tag: SQL | WeiWei's Blog</title>
+  <title>Hello Kubernetes | WeiWei's Blog</title>
   
 
 
@@ -157,51 +162,114 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">SQL
-          <small>Tag</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://weiweicheng123.github.io/2022/03/07/k8s1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Wei">
+      <meta itemprop="description" content="分享自己的所見所聞，紀錄生活雜事、感想和一些技術筆記">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WeiWei's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hello Kubernetes
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-03-07 20:40:01 / Modified: 23:38:30" itemprop="dateCreated datePublished" datetime="2022-03-07T20:40:01+08:00">2022-03-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Kubernetes/" itemprop="url" rel="index"><span itemprop="name">Kubernetes</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
+        <p><img src="/source/../../assets/k8s.png#pic_center" alt="k8s"></p>
+<h1 id="Kubernetes初探"><a href="#Kubernetes初探" class="headerlink" title="Kubernetes初探"></a>Kubernetes初探</h1><p>根據Kubernetes網站上所描述的</p>
+<blockquote>
+<p>Kubernetes, also known as K8s, is an open-source system for automating deployment, scaling, and management of containerized applications.</p>
+</blockquote>
+<p>Kubernetes 又名 K8s，是一個管理Microservices的系統，可以自動的部屬及管理多台機器上的容器(Container)</p>
+<p>Kubernetes 可以幫助我們做到</p>
+<ul>
+<li>同時部署多個 containers 到一台機器上，甚至多台機器</li>
+<li>管理各個 container 的狀態。如果某一個 container crash，Kubernetes 會偵測到並重啟這個 container，確保持續提供服務</li>
+<li>將一台機器上所有的 containers 轉移到另外一台機器上。</li>
+<li>Kubernetes cluster 可以從一台機器，延展到多台機器共同運行。<span id="more"></span>
+<h2 id="Minikube"><a href="#Minikube" class="headerlink" title="Minikube"></a>Minikube</h2>要在自己的電腦上執行K8s需要下載 <a target="_blank" rel="noopener" href="https://minikube.sigs.k8s.io/docs/start/">Minikube</a></li>
+</ul>
+<p>Minikube 是一種輕量級的 Kubernetes 實現，可以在本機上創建一個 VM，並部署simple cluster containing only one node，Minikube CLI 提供了用於 Cluster 的多種操作，包括start、stop、status和delete。</p>
+<p>下載完成後，可以先輸入 <code>minikube version</code> 來檢查版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">minikube version: v1.25.1</span><br><span class="line">commit: 3e64b11ed75e56e4898ea85f96b2e4af0301f43d</span><br></pre></td></tr></table></figure>
+
+<p>要啟動 Minikube 的步驟非常簡單，只需要在 Terminal 輸入 <code>minikube start</code> 便可以看到</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">😄  minikube v1.25.1 on Microsoft Windows 10 Home 10.0.19042 Build 19042</span><br><span class="line">✨  Using the docker driver based on existing profile</span><br><span class="line">👍  Starting control plane node minikube in cluster minikube</span><br><span class="line">🚜  Pulling base image ...</span><br><span class="line">🏃  Updating the running docker &quot;minikube&quot; container ...</span><br><span class="line">🐳  Preparing Kubernetes v1.23.1 on Docker 20.10.12 ...</span><br><span class="line">    ▪ kubelet.housekeeping-interval=5m</span><br><span class="line">🔎  Verifying Kubernetes components...</span><br><span class="line">    ▪ Using image gcr.io/k8s-minikube/storage-provisioner:v5</span><br><span class="line">🌟  Enabled addons: storage-provisioner, default-storageclass</span><br><span class="line">🏄  Done! kubectl is now configured to use &quot;minikube&quot; cluster and &quot;default&quot; namespace by default</span><br></pre></td></tr></table></figure>
+<p>一旦沒問題，恭喜! 可以開始進行K8s的應用了</p>
+<p><strong>這篇的介紹就先到這邊，這只是一個非常簡單的介紹和應用，之後會更深入地去介紹到K8s裡面的原件，和如何在自己的專案上去加入K8s</strong></p>
+<hr>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://minikube.sigs.k8s.io/docs/start/">https://minikube.sigs.k8s.io/docs/start/</a></p>
+<p><a target="_blank" rel="noopener" href="https://kubernetes.io/docs/setup/">https://kubernetes.io/docs/setup/</a></p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-02-22T21:19:01+08:00"
-              content="2022-02-22">
-          02-22
-        </time>
-      </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Kubernetes/" rel="tag"># Kubernetes</a>
+              <a href="/tags/Docker/" rel="tag"># Docker</a>
+          </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/02/22/docker-note/" itemprop="url">
-            <span itemprop="name">使用Docker後的注意事項</span>
-          </a>
-      </div>
+        
 
-    </header>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/02/26/ab-test/" rel="prev" title="幫自己的網站進行壓力測試吧 - Apache Bench">
+      <i class="fa fa-chevron-left"></i> 幫自己的網站進行壓力測試吧 - Apache Bench
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
   </article>
-
-    </div>
-  </div>
   
   
-  
-
   
 
 
@@ -254,6 +322,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Kubernetes%E5%88%9D%E6%8E%A2"><span class="nav-number">1.</span> <span class="nav-text">Kubernetes初探</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Minikube"><span class="nav-number">1.1.</span> <span class="nav-text">Minikube</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">2.</span> <span class="nav-text">Reference</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

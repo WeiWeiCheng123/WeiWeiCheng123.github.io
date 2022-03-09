@@ -20,24 +20,21 @@
     var CONFIG = {"hostname":"weiweicheng123.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Docker 是一個可以讓你的應用跑在虛擬系統上的應用程式 像是當你需要在程式裡與MySQL連線的話，往往你會需要下載MySQL在你自己的OS系統，假如你的程式要給別人用或進行測試的話，他們也會需要去下載MySQL，可想而知這不是一個輕鬆的事情，而且往往會有 在自己的電腦程式跑的超好，表現超棒，換到別人的電腦後直接原地死亡 的尷尬情況 而 Docker 可以避免掉繁瑣的安裝流程，讓應用程式都運行">
+  <meta name="description" content="Kubernetes在先前我們已經使用 minikube start 成功開啟了minikube ， 再來就是開始應用 k8s 的部分了 首先需要去下載 kubectl kubectl 是 k8s 的命令列工具，透過 kubectl 可以對 k8s cluster進行操作">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello Docker">
-<meta property="og:url" content="https://weiweicheng123.github.io/2022/02/22/docker/index.html">
+<meta property="og:title" content="Kubernetes Pods">
+<meta property="og:url" content="https://weiweicheng123.github.io/2022/03/07/k8s2/index.html">
 <meta property="og:site_name" content="WeiWei&#39;s Blog">
-<meta property="og:description" content="Docker 是一個可以讓你的應用跑在虛擬系統上的應用程式 像是當你需要在程式裡與MySQL連線的話，往往你會需要下載MySQL在你自己的OS系統，假如你的程式要給別人用或進行測試的話，他們也會需要去下載MySQL，可想而知這不是一個輕鬆的事情，而且往往會有 在自己的電腦程式跑的超好，表現超棒，換到別人的電腦後直接原地死亡 的尷尬情況 而 Docker 可以避免掉繁瑣的安裝流程，讓應用程式都運行">
+<meta property="og:description" content="Kubernetes在先前我們已經使用 minikube start 成功開啟了minikube ， 再來就是開始應用 k8s 的部分了 首先需要去下載 kubectl kubectl 是 k8s 的命令列工具，透過 kubectl 可以對 k8s cluster進行操作">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://weiweicheng123.github.io/assets/docker.jpeg#pic_center">
-<meta property="og:image" content="https://weiweicheng123.github.io/assets/docker_cmd.jpg">
-<meta property="og:image" content="https://weiweicheng123.github.io/assets/redis.jpg">
-<meta property="article:published_time" content="2022-02-22T14:40:01.000Z">
-<meta property="article:modified_time" content="2022-03-07T15:36:25.683Z">
+<meta property="article:published_time" content="2022-03-07T15:40:01.000Z">
+<meta property="article:modified_time" content="2022-03-09T14:36:34.934Z">
 <meta property="article:author" content="Wei">
+<meta property="article:tag" content="Kubernetes">
 <meta property="article:tag" content="Docker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://weiweicheng123.github.io/assets/docker.jpeg#pic_center">
 
-<link rel="canonical" href="https://weiweicheng123.github.io/2022/02/22/docker/">
+<link rel="canonical" href="https://weiweicheng123.github.io/2022/03/07/k8s2/">
 
 
 <script id="page-configurations">
@@ -50,7 +47,7 @@
   };
 </script>
 
-  <title>Hello Docker | WeiWei's Blog</title>
+  <title>Kubernetes Pods | WeiWei's Blog</title>
   
 
 
@@ -170,7 +167,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://weiweicheng123.github.io/2022/02/22/docker/">
+    <link itemprop="mainEntityOfPage" href="https://weiweicheng123.github.io/2022/03/07/k8s2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -183,7 +180,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Hello Docker
+          Kubernetes Pods
         </h1>
 
         <div class="post-meta">
@@ -193,14 +190,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2022-02-22 22:40:01" itemprop="dateCreated datePublished" datetime="2022-02-22T22:40:01+08:00">2022-02-22</time>
+              <time title="Created: 2022-03-07 23:40:01" itemprop="dateCreated datePublished" datetime="2022-03-07T23:40:01+08:00">2022-03-07</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-03-07 23:36:25" itemprop="dateModified" datetime="2022-03-07T23:36:25+08:00">2022-03-07</time>
+                <time title="Modified: 2022-03-09 22:36:34" itemprop="dateModified" datetime="2022-03-09T22:36:34+08:00">2022-03-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -208,7 +205,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a>
+                  <a href="/categories/Kubernetes/" itemprop="url" rel="index"><span itemprop="name">Kubernetes</span></a>
                 </span>
             </span>
 
@@ -223,49 +220,52 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><img src="/../assets/docker.jpeg#pic_center" alt="docker"></p>
-<p>Docker 是一個可以讓你的應用跑在虛擬系統上的應用程式</p>
-<p>像是當你需要在程式裡與MySQL連線的話，往往你會需要下載MySQL在你自己的OS系統<br>，假如你的程式要給別人用或進行測試的話，他們也會需要去下載MySQL，可想而知這不是一個輕鬆的事情，而且往往會有 <strong>在自己的電腦程式跑的超好，表現超棒，換到別人的電腦後直接原地死亡</strong> 的尷尬情況</p>
-<p>而 Docker 可以避免掉繁瑣的安裝流程，讓應用程式都運行在容器 (Container) 上，就算現在換到別人的電腦上也不會出現問題</p>
+        <h2 id="Kubernetes"><a href="#Kubernetes" class="headerlink" title="Kubernetes"></a>Kubernetes</h2><p>在先前我們已經使用 <code>minikube start</code> 成功開啟了minikube ， 再來就是開始應用 k8s 的部分了</p>
+<p>首先需要去下載 <a target="_blank" rel="noopener" href="https://kubernetes.io/releases/download/">kubectl</a></p>
+<p>kubectl 是 k8s 的命令列工具，透過 kubectl 可以對 k8s cluster進行操作</p>
 <span id="more"></span>
-<h2 id="安裝Docker"><a href="#安裝Docker" class="headerlink" title="安裝Docker"></a>安裝Docker</h2><p>官方安裝網址 <a target="_blank" rel="noopener" href="https://www.docker.com/products/docker-desktop">https://www.docker.com/products/docker-desktop</a></p>
-<h2 id="Hello-Docker"><a href="#Hello-Docker" class="headerlink" title="Hello Docker"></a>Hello Docker</h2><p>安裝完成之後在自己的Terminal打上docker應該會就跳出<br><img src="/../assets/docker_cmd.jpg"></p>
-<p>當成功出現這個畫面之後，恭喜! 你可以開始和 Docker 培養感情了XD</p>
-<h2 id="Docker-image"><a href="#Docker-image" class="headerlink" title="Docker image"></a>Docker image</h2><p>Docker image 可以想成是一個應用，它可以是 MySQL, Postgres, nginx, golang 之類的</p>
-<p>這個連結是官方用來放置 Docker image 的網站 <a target="_blank" rel="noopener" href="https://hub.docker.com/">https://hub.docker.com/</a></p>
-<p>以redis為例，在docker hub上搜尋 redis，就可以看到 redis 的 image</p>
-<p>點進去可以看到<br><img src="/../assets/redis.jpg"><br>在Terminal輸入 <code>docker pull redis</code></p>
-<p>Note: 在image name後面加上 :Tag 可以選擇版本 EX: <code>docker pull redis:7.0-rc1</code> 不輸入Tag代表使用最新的版本</p>
-<p>下載完成後輸入 <code>docker image ls</code> 可以列出目前已經下載的 image</p>
-<p>像是</p>
-<table>
-<thead>
-<tr>
-<th>REPOSITORY</th>
-<th>TAG</th>
-<th>IMAGE ID</th>
-<th>CREATED</th>
-<th>SIZE</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>redis</td>
-<td>latest</td>
-<td>f1b6973564e9</td>
-<td>3 weeks ago</td>
-<td>113MB</td>
-</tr>
-</tbody></table>
-<p>當你下載了之後不喜歡，或是覺得用不到了可以使用 <code>docker rmi [image name/ image ID]</code> 去移除掉</p>
-<h2 id="Docker-container"><a href="#Docker-container" class="headerlink" title="Docker container"></a>Docker container</h2><p>當你決定好要用哪一個image當作應用的時候就可以使用 <code>docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]</code></p>
-<p>最簡單就像是 <code>docker run -d redis</code></p>
-<p>透過docker run 去執行 redis image</p>
-<p>想要停止或是想要從停止的狀態開啟這個 container 的時候可以使用<br><code>docker stop/start container ID/name</code></p>
-<p>當今天要移除不想要用的 Container 可以執行 <code>docker rm Container ID/Name</code></p>
-<p><strong>這篇的介紹就先到這邊，這只是一個非常簡單的介紹和應用，之後有時間會更深入地去介紹如何將自己開發的專案透過Dockerfile包裝成屬於自己的image，以及透過docker-compose去一鍵安裝並執行所有自己需要的Container</strong></p>
+<p>輸入 <code>kubectl</code> 可以看到使用的方式</p>
+<p>首先可以先輸入 <code>kubectl get node</code> </p>
+<p>輸入後可以看到 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NAME       STATUS   ROLES                  AGE   VERSION</span><br><span class="line">minikube   Ready    control-plane,master   48m   v1.23.1</span><br></pre></td></tr></table></figure>
+<p>這邊可以看到目前執行的node是minikube</p>
+<p>接下來我們實際在k8s上執行一個image</p>
+<p>輸入 </p>
+<pre><code>$ kubectl run hello-minikube --image=gcr.io/google_containers/echoserver:1.10 --port=8080
+pod/hello-minikube created
+</code></pre>
+<p>透過 <code>kubectl get pods</code> 可以看到目前 hello-minikube 正在執行中，在後面加上 <code>-o wide</code>可以看到更多資訊</p>
+<pre><code>$ kubectl get pods
+NAME             READY   STATUS    RESTARTS   AGE
+hello-minikube   1/1     Running   0          32s
+$ kubectl get pods -o wide
+NAME             READY   STATUS    RESTARTS   AGE   IP           NODE       NOMINATED NODE   READINESS GATES
+hello-minikube   1/1     Running   0          39s   172.17.0.5   minikube   &lt;none&gt;           &lt;none&gt;
+</code></pre>
+<p>然後執行 <code>kubectl expose</code> 讓本地端可以連線到 hello-minikube</p>
+<pre><code>$ kubectl expose pod hello-minikube --type=NodePort
+service/hello-minikube exposed
+</code></pre>
+<p>接下來使用 <code>minikube service</code> 去查看剛剛部署的應用的網址</p>
+<pre><code>&amp; minikube service hello-minikube --url
+http://127.0.0.1:51043
+</code></pre>
+<p>每個人的連線網址都會不太一樣，取得網址後連線進入該網址可以看到</p>
+<p><a href="*pic_center">hello-minikube</a></p>
+<p>透過改URL的參數可以發現在real path 會有不同變化</p>
+<p>如果想要刪除這個Pod的話可以使用 <code>kubectl delete pod</code> ，當然不一定得是pod，當今天想刪除其他元件，只需要把pod改成相對應的就好</p>
+<pre><code>$kubectl delete pod hello-minikube
+pod &quot;hello-minikube&quot; deleted
+</code></pre>
+<h2 id="Pods"><a href="#Pods" class="headerlink" title="Pods"></a>Pods</h2><p>上面介紹到的就是 k8s 中最小的元件 pods ，基本上可以想像成就是一個或多個的 containers，但現階段運用上大多都使用Deployment比較多，Deployment可以做到一次部屬多個Pods，而且還有<strong>Replicas</strong>可以開啟多個pods</p>
+<p>這邊簡單介紹 Pod 的 yaml 架構，透過yaml來部署nginx</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># example-pod.yaml</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">nginx</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">    <span class="attr">containers:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">nginx</span></span><br><span class="line">      <span class="attr">image:</span> <span class="string">nginx</span> <span class="comment">#後面加 : 可以選擇特定tag</span></span><br><span class="line">      <span class="attr">ports:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">80</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f example-pod.yaml</span><br></pre></td></tr></table></figure>
+<p><strong>這篇的介紹就先到這邊，這是一個基本的Pod操作，之後會介紹到K8s其他的元件</strong></p>
 <hr>
-<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://hub.docker.com/_/redis">https://hub.docker.com/_/redis</a></p>
-<p><a target="_blank" rel="noopener" href="https://youtu.be/3c-iBn73dDE">https://youtu.be/3c-iBn73dDE</a></p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://minikube.sigs.k8s.io/docs/start/">https://minikube.sigs.k8s.io/docs/start/</a></p>
+<p><a target="_blank" rel="noopener" href="https://kubernetes.io/docs/setup/">https://kubernetes.io/docs/setup/</a></p>
+<p><a target="_blank" rel="noopener" href="https://youtu.be/X48VuDVv0do">https://youtu.be/X48VuDVv0do</a></p>
 
     </div>
 
@@ -275,6 +275,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
+              <a href="/tags/Kubernetes/" rel="tag"># Kubernetes</a>
               <a href="/tags/Docker/" rel="tag"># Docker</a>
           </div>
 
@@ -284,13 +285,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/02/22/docker-note/" rel="prev" title="使用Docker後的注意事項">
-      <i class="fa fa-chevron-left"></i> 使用Docker後的注意事項
+    <a href="/2022/03/07/k8s1/" rel="prev" title="Hello Kubernetes">
+      <i class="fa fa-chevron-left"></i> Hello Kubernetes
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/02/26/ab-test/" rel="next" title="幫自己的網站進行壓力測試吧 - Apache Bench">
-      幫自己的網站進行壓力測試吧 - Apache Bench <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -349,7 +347,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%9DDocker"><span class="nav-number">1.</span> <span class="nav-text">安裝Docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hello-Docker"><span class="nav-number">2.</span> <span class="nav-text">Hello Docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-image"><span class="nav-number">3.</span> <span class="nav-text">Docker image</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-container"><span class="nav-number">4.</span> <span class="nav-text">Docker container</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number"></span> <span class="nav-text">Reference</span></a></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Kubernetes"><span class="nav-number">1.</span> <span class="nav-text">Kubernetes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pods"><span class="nav-number">2.</span> <span class="nav-text">Pods</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number"></span> <span class="nav-text">Reference</span></a></div>
       </div>
       <!--/noindex-->
 

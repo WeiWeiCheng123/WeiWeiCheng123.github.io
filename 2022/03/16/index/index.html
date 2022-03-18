@@ -20,24 +20,20 @@
     var CONFIG = {"hostname":"weiweicheng123.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Docker 是一個可以讓你的應用跑在虛擬系統上的應用程式 像是當你需要在程式裡與MySQL連線的話，往往你會需要下載MySQL在你自己的OS系統，假如你的程式要給別人用或進行測試的話，他們也會需要去下載MySQL，可想而知這不是一個輕鬆的事情，而且往往會有 在自己的電腦程式跑的超好，表現超棒，換到別人的電腦後直接原地死亡 的尷尬情況 而 Docker 可以避免掉繁瑣的安裝流程，讓應用程式都運行">
+  <meta name="description" content="資料庫的 Index這篇文要來介紹何謂 Index ，以及 Postgres 內是如何透過 Index 來加速搜尋的速度 資料庫索引 ( Database Index )假如今天要從資料庫內取出符合特定規則的資料，一般的流程是會一行一行的去檢查，去找出符合規則的資料，如果是就把資料拿出來，如果不是就繼續尋找直到結束，這就是所謂的 Full Table Scan 可以想像當今天資料量很大的時候，單靠">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello Docker">
-<meta property="og:url" content="https://weiweicheng123.github.io/2022/02/22/docker/index.html">
+<meta property="og:title" content="Database 中 Index 簡介">
+<meta property="og:url" content="https://weiweicheng123.github.io/2022/03/16/index/index.html">
 <meta property="og:site_name" content="WeiWei&#39;s Blog">
-<meta property="og:description" content="Docker 是一個可以讓你的應用跑在虛擬系統上的應用程式 像是當你需要在程式裡與MySQL連線的話，往往你會需要下載MySQL在你自己的OS系統，假如你的程式要給別人用或進行測試的話，他們也會需要去下載MySQL，可想而知這不是一個輕鬆的事情，而且往往會有 在自己的電腦程式跑的超好，表現超棒，換到別人的電腦後直接原地死亡 的尷尬情況 而 Docker 可以避免掉繁瑣的安裝流程，讓應用程式都運行">
+<meta property="og:description" content="資料庫的 Index這篇文要來介紹何謂 Index ，以及 Postgres 內是如何透過 Index 來加速搜尋的速度 資料庫索引 ( Database Index )假如今天要從資料庫內取出符合特定規則的資料，一般的流程是會一行一行的去檢查，去找出符合規則的資料，如果是就把資料拿出來，如果不是就繼續尋找直到結束，這就是所謂的 Full Table Scan 可以想像當今天資料量很大的時候，單靠">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://weiweicheng123.github.io/assets/docker.jpeg#pic_center">
-<meta property="og:image" content="https://weiweicheng123.github.io/assets/docker_cmd.jpg">
-<meta property="og:image" content="https://weiweicheng123.github.io/assets/redis.jpg">
-<meta property="article:published_time" content="2022-02-22T14:40:01.000Z">
-<meta property="article:modified_time" content="2022-03-07T15:36:25.683Z">
+<meta property="article:published_time" content="2022-03-16T08:26:40.000Z">
+<meta property="article:modified_time" content="2022-03-18T08:31:19.300Z">
 <meta property="article:author" content="Wei">
-<meta property="article:tag" content="Docker">
+<meta property="article:tag" content="Postgres">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://weiweicheng123.github.io/assets/docker.jpeg#pic_center">
 
-<link rel="canonical" href="https://weiweicheng123.github.io/2022/02/22/docker/">
+<link rel="canonical" href="https://weiweicheng123.github.io/2022/03/16/index/">
 
 
 <script id="page-configurations">
@@ -50,7 +46,7 @@
   };
 </script>
 
-  <title>Hello Docker | WeiWei's Blog</title>
+  <title>Database 中 Index 簡介 | WeiWei's Blog</title>
   
 
 
@@ -170,7 +166,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://weiweicheng123.github.io/2022/02/22/docker/">
+    <link itemprop="mainEntityOfPage" href="https://weiweicheng123.github.io/2022/03/16/index/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -183,7 +179,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Hello Docker
+          Database 中 Index 簡介
         </h1>
 
         <div class="post-meta">
@@ -193,14 +189,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2022-02-22 22:40:01" itemprop="dateCreated datePublished" datetime="2022-02-22T22:40:01+08:00">2022-02-22</time>
+              <time title="Created: 2022-03-16 16:26:40" itemprop="dateCreated datePublished" datetime="2022-03-16T16:26:40+08:00">2022-03-16</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-03-07 23:36:25" itemprop="dateModified" datetime="2022-03-07T23:36:25+08:00">2022-03-07</time>
+                <time title="Modified: 2022-03-18 16:31:19" itemprop="dateModified" datetime="2022-03-18T16:31:19+08:00">2022-03-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -208,7 +204,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a>
+                  <a href="/categories/Postgres/" itemprop="url" rel="index"><span itemprop="name">Postgres</span></a>
                 </span>
             </span>
 
@@ -223,49 +219,35 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><img src="/../assets/docker.jpeg#pic_center" alt="docker"></p>
-<p>Docker 是一個可以讓你的應用跑在虛擬系統上的應用程式</p>
-<p>像是當你需要在程式裡與MySQL連線的話，往往你會需要下載MySQL在你自己的OS系統<br>，假如你的程式要給別人用或進行測試的話，他們也會需要去下載MySQL，可想而知這不是一個輕鬆的事情，而且往往會有 <strong>在自己的電腦程式跑的超好，表現超棒，換到別人的電腦後直接原地死亡</strong> 的尷尬情況</p>
-<p>而 Docker 可以避免掉繁瑣的安裝流程，讓應用程式都運行在容器 (Container) 上，就算現在換到別人的電腦上也不會出現問題</p>
+        <h1 id="資料庫的-Index"><a href="#資料庫的-Index" class="headerlink" title="資料庫的 Index"></a>資料庫的 Index</h1><p>這篇文要來介紹何謂 Index ，以及 Postgres 內是如何透過 Index 來加速搜尋的速度</p>
+<h2 id="資料庫索引-Database-Index"><a href="#資料庫索引-Database-Index" class="headerlink" title="資料庫索引 ( Database Index )"></a>資料庫索引 ( Database Index )</h2><p>假如今天要從資料庫內取出符合特定規則的資料，一般的流程是會一行一行的去檢查，去找出符合規則的資料，如果是就把資料拿出來，如果不是就繼續尋找直到結束，這就是所謂的 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Full_table_scan">Full Table Scan</a></p>
+<p>可以想像當今天資料量很大的時候，單靠 Full Table Scan 是不太行的，所以這時候就需要藉由其他方式來進行加速，而加速的方法就是本篇文要介紹到的 Index</p>
 <span id="more"></span>
-<h2 id="安裝Docker"><a href="#安裝Docker" class="headerlink" title="安裝Docker"></a>安裝Docker</h2><p>官方安裝網址 <a target="_blank" rel="noopener" href="https://www.docker.com/products/docker-desktop">https://www.docker.com/products/docker-desktop</a></p>
-<h2 id="Hello-Docker"><a href="#Hello-Docker" class="headerlink" title="Hello Docker"></a>Hello Docker</h2><p>安裝完成之後在自己的Terminal打上docker應該會就跳出<br><img src="/../assets/docker_cmd.jpg"></p>
-<p>當成功出現這個畫面之後，恭喜! 你可以開始和 Docker 培養感情了XD</p>
-<h2 id="Docker-image"><a href="#Docker-image" class="headerlink" title="Docker image"></a>Docker image</h2><p>Docker image 可以想成是一個應用，它可以是 MySQL, Postgres, nginx, golang 之類的</p>
-<p>這個連結是官方用來放置 Docker image 的網站 <a target="_blank" rel="noopener" href="https://hub.docker.com/">https://hub.docker.com/</a></p>
-<p>以redis為例，在docker hub上搜尋 redis，就可以看到 redis 的 image</p>
-<p>點進去可以看到<br><img src="/../assets/redis.jpg"><br>在Terminal輸入 <code>docker pull redis</code></p>
-<p>Note: 在image name後面加上 :Tag 可以選擇版本 EX: <code>docker pull redis:7.0-rc1</code> 不輸入Tag代表使用最新的版本</p>
-<p>下載完成後輸入 <code>docker image ls</code> 可以列出目前已經下載的 image</p>
-<p>像是</p>
-<table>
-<thead>
-<tr>
-<th>REPOSITORY</th>
-<th>TAG</th>
-<th>IMAGE ID</th>
-<th>CREATED</th>
-<th>SIZE</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>redis</td>
-<td>latest</td>
-<td>f1b6973564e9</td>
-<td>3 weeks ago</td>
-<td>113MB</td>
-</tr>
-</tbody></table>
-<p>當你下載了之後不喜歡，或是覺得用不到了可以使用 <code>docker rmi [image name/ image ID]</code> 去移除掉</p>
-<h2 id="Docker-container"><a href="#Docker-container" class="headerlink" title="Docker container"></a>Docker container</h2><p>當你決定好要用哪一個image當作應用的時候就可以使用 <code>docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]</code></p>
-<p>最簡單就像是 <code>docker run -d redis</code></p>
-<p>透過docker run 去執行 redis image</p>
-<p>想要停止或是想要從停止的狀態開啟這個 container 的時候可以使用<br><code>docker stop/start container ID/name</code></p>
-<p>當今天要移除不想要用的 Container 可以執行 <code>docker rm Container ID/Name</code></p>
-<p><strong>這篇的介紹就先到這邊，這只是一個非常簡單的介紹和應用，之後有時間會更深入地去介紹如何將自己開發的專案透過Dockerfile包裝成屬於自己的image，以及透過docker-compose去一鍵安裝並執行所有自己需要的Container</strong></p>
+<h2 id="Index-是什麼"><a href="#Index-是什麼" class="headerlink" title="Index 是什麼?"></a>Index 是什麼?</h2><p>大部分的 RDBMS 都會預設把 Primary Key (以下簡稱PK) 設為 Index，假如現在有一個 Table 名為 tab1 ，其 tab1 的欄位 id 被設為 index ， 在資料庫裡面會有一個資料結構儲存了 tab1 內所有的 id ， 當今天用像是 <code>SELECT  * FROM tab1 WHERE id = 10</code> 這類的 SQL 語句，資料庫會先去儲存所有的 id 的資料內使用一些搜尋的演算法 (通常複雜度都是 O(log(n)) ) 來搜尋這個 id ，假如找到的話再去 tab1 把資料取出。</p>
+<p>以 Postgres 為例的話，其預設儲存 Index 的資料結構為 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/B%2B_tree">B+ Tree</a></p>
+<h2 id="非主要欄位"><a href="#非主要欄位" class="headerlink" title="非主要欄位"></a>非主要欄位</h2><p>大多數的資料庫會將主要欄位(PK)設為 Index ，但是假如今天的資料庫是一個儲存身分證的資料庫，那麼可能會需要透過 First name 、 Last name 或兩個都用的方式來搜尋資料，這時候我們可以自己去定義 PK 以外的索引來幫助我們搜尋，當今天 Index 設定的方式是 First name + Last name 則這個又稱為複合式索引 ( Composite Index )</p>
+<h2 id="複合式索引"><a href="#複合式索引" class="headerlink" title="複合式索引"></a>複合式索引</h2><p>單一索引就如上述所說的，但是在真實情境下WHERE有時候會搭配多個欄位來進行搜尋，這時候使用複合式索引就比較來的有效率，另外假如複合式索引設定的先後順序是 A,B,C ，那搜尋的條件優先順序就是以最左邊的為最優先，假如 A 是居住地的話，那搜尋條件最優先就是先尋找符合 A 條件的資料，當今天使用搜尋時，其搜尋的組合有三種</p>
+<pre><code>    A, B, C
+    A, B
+    A
+</code></pre>
+<p>但是不支援 B, C ; B ; C 這三種組合，需要特別注意，因此在設計複合式索引時，要把常用或是常用來當第一個做檢查的欄位當作第一個Index</p>
+<h2 id="注意事項"><a href="#注意事項" class="headerlink" title="注意事項"></a>注意事項</h2><ol>
+<li><p>索引不是越多越好</p>
+<p>索引並不是絕對無敵的，當今天有 10 個欄位，假如都為這10個欄位各自都建立 Index ，則資料庫會多出 10 個用來儲存這些 Index 的 B+ Tree，這樣反而會拖類整個資料庫的效能，而且在新增、修改 Table 內的資料的運算量會變得很大</p>
+</li>
+<li><p>用EXPLAIN來輔助分析SQL索引效能</p>
+</li>
+<li><p>索引並不是建立了就會使用</p>
+<p>假如今天的索引是性別，而資料庫內大部分都是男生，那假如今天要從資料庫內搜尋男生的資料出來的話，資料庫會使用全掃的方式，如果要搜尋女生的資料的話才會使用索引</p>
+</li>
+<li><p>複合式索引的欄位先後順序 </p>
+<p> 假如今天是三個欄位組成一個複合式索引，則索引的順序由左至右可以藉由常用度來進行由大到小的排序，避免用了複合式索引，但是最常用到的欄位在最右邊，導致搜尋時可能不會用到索引</p>
+</li>
+</ol>
+<p><strong>今天就先介紹到這邊，這篇文最主要是介紹了如何在Database搜尋上進行加速，以及使用索引及複合式索引需要注意到的地方，但是本人也只是當作一個學習紀錄的方式來撰寫這篇，要了解更多的話可以到各個RDBMS的Document學習</strong></p>
 <hr>
-<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://hub.docker.com/_/redis">https://hub.docker.com/_/redis</a></p>
-<p><a target="_blank" rel="noopener" href="https://youtu.be/3c-iBn73dDE">https://youtu.be/3c-iBn73dDE</a></p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://www.postgresql.org/docs/current/indexes.html">https://www.postgresql.org/docs/current/indexes.html</a></p>
 
     </div>
 
@@ -275,7 +257,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Docker/" rel="tag"># Docker</a>
+              <a href="/tags/Postgres/" rel="tag"># Postgres</a>
           </div>
 
         
@@ -284,13 +266,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/02/22/docker-note/" rel="prev" title="使用Docker後的注意事項">
-      <i class="fa fa-chevron-left"></i> 使用Docker後的注意事項
+    <a href="/2022/03/07/k8s2/" rel="prev" title="Kubernetes Pods">
+      <i class="fa fa-chevron-left"></i> Kubernetes Pods
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/02/26/ab-test/" rel="next" title="幫自己的網站進行壓力測試吧 - Apache Bench">
-      幫自己的網站進行壓力測試吧 - Apache Bench <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -349,7 +328,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%9DDocker"><span class="nav-number">1.</span> <span class="nav-text">安裝Docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hello-Docker"><span class="nav-number">2.</span> <span class="nav-text">Hello Docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-image"><span class="nav-number">3.</span> <span class="nav-text">Docker image</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-container"><span class="nav-number">4.</span> <span class="nav-text">Docker container</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number"></span> <span class="nav-text">Reference</span></a></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B3%87%E6%96%99%E5%BA%AB%E7%9A%84-Index"><span class="nav-number">1.</span> <span class="nav-text">資料庫的 Index</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B3%87%E6%96%99%E5%BA%AB%E7%B4%A2%E5%BC%95-Database-Index"><span class="nav-number">1.1.</span> <span class="nav-text">資料庫索引 ( Database Index )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Index-%E6%98%AF%E4%BB%80%E9%BA%BC"><span class="nav-number">1.2.</span> <span class="nav-text">Index 是什麼?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%9E%E4%B8%BB%E8%A6%81%E6%AC%84%E4%BD%8D"><span class="nav-number">1.3.</span> <span class="nav-text">非主要欄位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A4%87%E5%90%88%E5%BC%8F%E7%B4%A2%E5%BC%95"><span class="nav-number">1.4.</span> <span class="nav-text">複合式索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85"><span class="nav-number">1.5.</span> <span class="nav-text">注意事項</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">2.</span> <span class="nav-text">Reference</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

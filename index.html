@@ -163,6 +163,89 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://weiweicheng123.github.io/2022/03/16/index/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Wei">
+      <meta itemprop="description" content="分享自己的所見所聞，紀錄生活雜事、感想和一些技術筆記">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WeiWei's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/16/index/" class="post-title-link" itemprop="url">Database 中 Index 簡介</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-03-16 16:26:40" itemprop="dateCreated datePublished" datetime="2022-03-16T16:26:40+08:00">2022-03-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-03-18 16:31:19" itemprop="dateModified" datetime="2022-03-18T16:31:19+08:00">2022-03-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Postgres/" itemprop="url" rel="index"><span itemprop="name">Postgres</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="資料庫的-Index"><a href="#資料庫的-Index" class="headerlink" title="資料庫的 Index"></a>資料庫的 Index</h1><p>這篇文要來介紹何謂 Index ，以及 Postgres 內是如何透過 Index 來加速搜尋的速度</p>
+<h2 id="資料庫索引-Database-Index"><a href="#資料庫索引-Database-Index" class="headerlink" title="資料庫索引 ( Database Index )"></a>資料庫索引 ( Database Index )</h2><p>假如今天要從資料庫內取出符合特定規則的資料，一般的流程是會一行一行的去檢查，去找出符合規則的資料，如果是就把資料拿出來，如果不是就繼續尋找直到結束，這就是所謂的 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Full_table_scan">Full Table Scan</a></p>
+<p>可以想像當今天資料量很大的時候，單靠 Full Table Scan 是不太行的，所以這時候就需要藉由其他方式來進行加速，而加速的方法就是本篇文要介紹到的 Index</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/16/index/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://weiweicheng123.github.io/2022/03/07/k8s2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -194,7 +277,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-03-09 22:36:34" itemprop="dateModified" datetime="2022-03-09T22:36:34+08:00">2022-03-09</time>
+                <time title="Modified: 2022-03-09 22:40:57" itemprop="dateModified" datetime="2022-03-09T22:40:57+08:00">2022-03-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -705,7 +788,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

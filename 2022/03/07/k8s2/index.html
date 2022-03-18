@@ -28,7 +28,7 @@
 <meta property="og:description" content="Kubernetes在先前我們已經使用 minikube start 成功開啟了minikube ， 再來就是開始應用 k8s 的部分了 首先需要去下載 kubectl kubectl 是 k8s 的命令列工具，透過 kubectl 可以對 k8s cluster進行操作">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-03-07T15:40:01.000Z">
-<meta property="article:modified_time" content="2022-03-09T14:36:34.934Z">
+<meta property="article:modified_time" content="2022-03-09T14:40:57.092Z">
 <meta property="article:author" content="Wei">
 <meta property="article:tag" content="Kubernetes">
 <meta property="article:tag" content="Docker">
@@ -197,7 +197,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-03-09 22:36:34" itemprop="dateModified" datetime="2022-03-09T22:36:34+08:00">2022-03-09</time>
+                <time title="Modified: 2022-03-09 22:40:57" itemprop="dateModified" datetime="2022-03-09T22:40:57+08:00">2022-03-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -257,7 +257,7 @@ http://127.0.0.1:51043
 <pre><code>$kubectl delete pod hello-minikube
 pod &quot;hello-minikube&quot; deleted
 </code></pre>
-<h2 id="Pods"><a href="#Pods" class="headerlink" title="Pods"></a>Pods</h2><p>上面介紹到的就是 k8s 中最小的元件 pods ，基本上可以想像成就是一個或多個的 containers，但現階段運用上大多都使用Deployment比較多，Deployment可以做到一次部屬多個Pods，而且還有<strong>Replicas</strong>可以開啟多個pods</p>
+<h2 id="Pods"><a href="#Pods" class="headerlink" title="Pods"></a>Pods</h2><p>上面介紹到的就是 k8s 中最小的元件 pods ，基本上可以類比成container，但現階段運用上大多都使用Deployment比較多，Deployment可以做到一次部屬多個Pods，而且還有<strong>Replicas</strong>可以開啟多個pods</p>
 <p>這邊簡單介紹 Pod 的 yaml 架構，透過yaml來部署nginx</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># example-pod.yaml</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">nginx</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">    <span class="attr">containers:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">nginx</span></span><br><span class="line">      <span class="attr">image:</span> <span class="string">nginx</span> <span class="comment">#後面加 : 可以選擇特定tag</span></span><br><span class="line">      <span class="attr">ports:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">80</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f example-pod.yaml</span><br></pre></td></tr></table></figure>
@@ -288,7 +288,10 @@ pod &quot;hello-minikube&quot; deleted
     <a href="/2022/03/07/k8s1/" rel="prev" title="Hello Kubernetes">
       <i class="fa fa-chevron-left"></i> Hello Kubernetes
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2022/03/16/index/" rel="next" title="Database 中 Index 簡介">
+      Database 中 Index 簡介 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -360,7 +363,7 @@ pod &quot;hello-minikube&quot; deleted
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

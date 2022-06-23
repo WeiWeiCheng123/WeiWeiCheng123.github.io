@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"weiweicheng123.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="距離 onboard 的時間剩下不到兩個禮拜，前陣子也因為期末報告、助教和研究所的事情弄到沒時間寫文章，所以就用這篇文章來當作還債吧(?) 先自我介紹一下，我目前是就讀台灣科技大學電機研究所，從去年年底開始找實習的機會，剛好 Dcard 在年初的時候發佈了徵人的消息，所以我就二話不說開始往這個方向努力了XD 首先還是要先感謝 Dcard 的各位大大，讓整個面試的過程相當順暢也愉快，能有這個機會真">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2022 Dcard Backend Intern 面試分享">
+<meta property="og:url" content="https://weiweicheng123.github.io/2022/06/23/2022-Dcard-Backend-Intern-%E9%9D%A2%E8%A9%A6%E5%88%86%E4%BA%AB/index.html">
+<meta property="og:site_name" content="WeiWei&#39;s Blog">
+<meta property="og:description" content="距離 onboard 的時間剩下不到兩個禮拜，前陣子也因為期末報告、助教和研究所的事情弄到沒時間寫文章，所以就用這篇文章來當作還債吧(?) 先自我介紹一下，我目前是就讀台灣科技大學電機研究所，從去年年底開始找實習的機會，剛好 Dcard 在年初的時候發佈了徵人的消息，所以我就二話不說開始往這個方向努力了XD 首先還是要先感謝 Dcard 的各位大大，讓整個面試的過程相當順暢也愉快，能有這個機會真">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://weiweicheng123.github.io/assets/Interview.png#pic_center">
+<meta property="article:published_time" content="2022-06-23T05:26:28.000Z">
+<meta property="article:modified_time" content="2022-06-23T05:29:39.356Z">
+<meta property="article:author" content="Wei">
+<meta property="article:tag" content="Interview">
+<meta property="article:tag" content="Dcard">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://weiweicheng123.github.io/assets/Interview.png#pic_center">
+
+<link rel="canonical" href="https://weiweicheng123.github.io/2022/06/23/2022-Dcard-Backend-Intern-%E9%9D%A2%E8%A9%A6%E5%88%86%E4%BA%AB/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>2022 Dcard Backend Intern 面試分享 | WeiWei's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">WeiWei's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-resume">
+
+    <a href="https://drive.google.com/file/d/1QuJiHXEd2f7s6kKVzSVku1z4eXtfa9sC/view?usp=sharing/" rel="noopener" target="_blank"><i class="fa fa-file fa-fw"></i>Resume</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://weiweicheng123.github.io/2022/06/23/2022-Dcard-Backend-Intern-%E9%9D%A2%E8%A9%A6%E5%88%86%E4%BA%AB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Wei">
+      <meta itemprop="description" content="分享自己的所見所聞，紀錄生活雜事、感想和一些技術筆記">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WeiWei's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          2022 Dcard Backend Intern 面試分享
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-06-23 13:26:28 / Modified: 13:29:39" itemprop="dateCreated datePublished" datetime="2022-06-23T13:26:28+08:00">2022-06-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Interview/" itemprop="url" rel="index"><span itemprop="name">Interview</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Interview/Dcard/" itemprop="url" rel="index"><span itemprop="name">Dcard</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><img src="/../assets/Interview.png#pic_center" alt="Untitled"></p>
+<p>距離 onboard 的時間剩下不到兩個禮拜，前陣子也因為期末報告、助教和研究所的事情弄到沒時間寫文章，所以就用這篇文章來當作還債吧(?)</p>
+<p>先自我介紹一下，我目前是就讀台灣科技大學電機研究所，從去年年底開始找實習的機會，剛好 Dcard 在年初的時候發佈了徵人的消息，所以我就二話不說開始往這個方向努力了XD</p>
+<p>首先還是要先感謝 Dcard 的各位大大，讓整個面試的過程相當順暢也愉快，能有這個機會真的很感謝 😀</p>
+<span id="more"></span>
+<br>
+
+<h1 id="面試過程"><a href="#面試過程" class="headerlink" title="面試過程"></a>面試過程</h1><p>以下會分成 作業關 ➡️ 第一階段面試 ➡️ 第二階段面試 ➡️ CEO 面試 來一一介紹</p>
+<br>
+
+<h2 id="作業關"><a href="#作業關" class="headerlink" title="作業關"></a>作業關</h2><p>基本上要進入 Dcard 前後端實習生的面試流程第一步就是要先完成指定的作業，2022的作業內容簡單來說就是使用 Go 搭配 資料庫 &#x2F; Cache 來完成一個縮網址系統。</p>
+<p>縮網址系統最終需要完成以下兩個 API，以及 unit tests。</p>
+<ol>
+<li><p>輸入一個 URL 和過期時間，回傳一個縮網址</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Upload URL and expired time API</span></span><br><span class="line">curl -X POST -H <span class="string">&quot;Content-Type:application/json&quot;</span> http://localhost/api/v1/urls -d <span class="string">&#x27;&#123;</span></span><br><span class="line"><span class="string">	&quot;url&quot;: &quot;&lt;original_url&gt;&quot;,</span></span><br><span class="line"><span class="string">	&quot;expireAt&quot;: &quot;&lt;expire_time&gt;&quot;</span></span><br><span class="line"><span class="string">&#125;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># API 1 Response example</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="string">&quot;id&quot;</span>: <span class="string">&quot;&lt;url_id&gt;&quot;</span>,</span><br><span class="line">	<span class="string">&quot;shortURL&quot;</span>: <span class="string">&quot;http://localhost/&lt;url_id&gt;&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>輸入一個縮網址，假如存在且尚未過期，重新導向至原網址，反之，回傳404</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Redirect URL API</span></span><br><span class="line">curl -L -X GET http://localhost/&lt;url_id&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># Redirect to original URL</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>後面會更詳細去介紹。</p>
+<br>
+
+<h2 id="第一階段面試"><a href="#第一階段面試" class="headerlink" title="第一階段面試"></a>第一階段面試</h2><p>當你履歷被審核過之後就會進到第一階段的面試，第一階段是由後端的團隊來面談，也就是關於技術的面試，分成前1個半小時和後半小時，後面會更詳細去介紹。</p>
+<br>
+
+<h2 id="第二階段面試"><a href="#第二階段面試" class="headerlink" title="第二階段面試"></a>第二階段面試</h2><p>這一個階段是由 Dcard 的 Talen Operation Team 來面試，面試的人都很親切，過程也是讓人不會感到壓迫，後面會更詳細去介紹。</p>
+<br>
+
+<h2 id="CEO-面試"><a href="#CEO-面試" class="headerlink" title="CEO 面試"></a>CEO 面試</h2><p>這一關可以當成是跟 CEO 聊天，基本上沒有什麼限制（但我也沒問什麼怪問題就是了），後面會更詳細去介紹。</p>
+<br>
+
+<h1 id="作業關-1"><a href="#作業關-1" class="headerlink" title="作業關"></a>作業關</h1><p>這是我第一次體驗到面試需要寫作業，還蠻酷的，但同時也很怕自己考慮的不夠周全所以真的寫得蠻久的XD</p>
+<p>以下是作業的內容</p>
+<p>Design and implement (with unit tests) an URL shortener using Go programming language.<br><strong>Criteria</strong>:</p>
+<ol>
+<li>URL shortener has 2 APIs, please follow API example to implement<ol>
+<li>A RESTful API to upload a URL with its expired date and response with a shorten URL.</li>
+<li>An API to serve shorten URLs responded by upload API, and redirect to original URL. If URL is expired, please response with status 404.</li>
+</ol>
+</li>
+<li>Please feel free to use any external libs if needed.</li>
+<li>It is also free to use following external storage including:<ol>
+<li>Relational database (MySQL, PostgreSQL, SQLite)</li>
+<li>Cache storage (Redis, Memcached)</li>
+</ol>
+</li>
+<li>Please implement reasonable constrains and error handling of these 2 APIs.</li>
+<li>You do not need to consider auth.</li>
+<li>Many clients might access shorten URL simultaneously or try to access with non-existent shorten URL, please take performance into account.</li>
+</ol>
+<p>這個題目算是一個很經典的題目，同時實做到了 POST 跟 GET 和 資料庫的功能，最簡單的寫法不外乎就是做出 POST 跟 GET 的 API 並與 Redis 做搭配，使用 Redis 的 expire command 做到過期失效的功能，但基本上這樣的系統馬上就被打爆了XD</p>
+<p>這邊附上我自己的作業 <a target="_blank" rel="noopener" href="https://github.com/WeiWeiCheng123/URLshortener">GitHub</a> ，裡面介紹的蠻詳細的，有興趣的可以看一下(<del>看完可以動動小手給個Star</del>)</p>
+<br>
+
+<p>以下分享幾個我覺得蠻重要的地方</p>
+<ul>
+<li><p>縮網址生成的方式</p>
+<p>  其實縮網址生成的方式可以很簡單，也可以很困難(<del>就跟哈味一樣</del>)，為了讓避免有人惡意亂試一堆不存在於資料庫的縮網址去拖垮整體系統的速度，因此關鍵是需要設計一個 Checksum 讓系統能在最一開始的階段就擋下一些非法的輸入，但 Checksum 又不能太簡單，避免馬上就被拆穿。</p>
+</li>
+<li><p>資料庫搭配 Cache</p>
+<p>  在上面我寫到了最簡單的寫法，這個寫法一旦系統流量大了一點之後基本上就爆炸了，所以需要資料庫負責儲存大量的資料，被存取的資料才需要放在Cache。</p>
+</li>
+<li><p>限制流量避免瞬間同一個 IP 短時間的存取</p>
+<p>  其實這個就是去年的作業，有興趣的可以去了解一下，我把去年作業的內容加進去這次的作業，做到一個簡單限制流量的功能。</p>
+</li>
+<li><p>刪除過期的網址</p>
+<p>  在最一開始的時候我有提供一個簡單的架構，會使用 Redis 的原因不外乎就是因為可以指定資料過期的時間，但現在把資料都存在資料庫後，就沒有辦法讓資料過期後自動就被刪除的機制，因此設計了一個 Cron Job 的功能，在定期的時間刪除過期的資料。</p>
+</li>
+</ul>
+<p>當然這個系統還可以更好，如果有更好的建議或想法可以發 PR 給我 😁         </p>
+<br>
+
+<h1 id="第一階段面試-1"><a href="#第一階段面試-1" class="headerlink" title="第一階段面試"></a>第一階段面試</h1><p>這一個階段首先前1個半小時是跟兩位後端工程師進行面試，問的內容包含了</p>
+<ul>
+<li>網路的架構</li>
+<li>Linux系統架構</li>
+<li>作業系統的相關問題</li>
+<li>資料庫</li>
+<li>Golang</li>
+<li>Docker &amp; k8s</li>
+</ul>
+<p>最後有一個小小的 Coding Interview，題目是請使用 Go 做出一個能夠以 batch 的方式從 Go channel 中提取出資料並傳入下一個 func 的功能。</p>
+<br>
+
+<blockquote>
+<p>💡 舉例 : 假如今天有100筆資料在 Go channel 內，以 batch 為10的情況下將 Go channel 的資料放入 func A 中，那實做出來的流程大致上會是每讀取 10 次 Go channel 的資料後就把那 10 筆資料傳入 A 中，直到 Go channel 中沒有任何的資料。</p>
+</blockquote>
+<br>
+
+<p>當 Coding Interview 結束後，就會跟後端的 Team Lead 面談，基本上會以作業為主，分享自己作業的思路，也可以問一些問題，這一個階段是一個相對重要的階段，由於當時疫情還蠻嚴重的所以改成線上面試，雖然沒辦法參觀到 Dcard 辦公室，不過也讓我相對的比較不這麼緊張。</p>
+<br>
+
+<h1 id="第二階段面試-1"><a href="#第二階段面試-1" class="headerlink" title="第二階段面試"></a>第二階段面試</h1><p>這一個階段是由 Dcard 的 Talent Operation Team 來面試，這場面試原先是線上面試，但後來他們覺得沒有讓面試者來參觀了解公司太可惜了，所以就改成實體面試，疫情嚴重的情況下還能夠參觀辦公室，真的超感謝他們 🙏</p>
+<p>面試的內容主要是會透過問問題的方式來看你是不是適合 Dcard 這間公司，整體過程我覺得不會給人太大的壓力，在等待的時候還有 Dcard 的人過來偷偷加油XD</p>
+<br>
+
+<h1 id="CEO-面試-1"><a href="#CEO-面試-1" class="headerlink" title="CEO 面試"></a>CEO 面試</h1><p>最後一階段是 CEO 面試，由於當時辦公室是遠距狀態，所以跟 CEO 面試是在第二階段結束後，在公司使用他們的電腦進行面試。</p>
+<p>在面試前一定要準備好問題，因為 CEO 回答的速度很快，沒準備好問題基本上就會直接卡死，問的問題也沒有太多的限制，可以當作跟 CEO 聊天就好，在聊天的過程中覺得能在這麼年輕就創造出如此具有規模和影響力的軟體真的很厲害。</p>
+<p>在面試當時還有聊到咖啡，因為我之前有在咖啡廳打工過，剛好那時候 CEO 有在研究咖啡，對咖啡也蠻有興趣的，所以就聊得蠻開心的。</p>
+<br>
+
+<h1 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h1><p>以上就是我面試 Dcard 大致上的流程了，其實在面試的時候就可以感受到他們是很認真地去對待每一個來面試的人，不管你是應徵正職還是實習生，所以在準備面試和寫作業的時候就要更加的認真去對待，在寫作業的時候盡可能的去想到各種會發生的結果，想辦法去解決它，並透過<strong>測試</strong>去驗證自己的程式不會發生這個問題。</p>
+<p>最後還是很感謝面試的人，真的是辛苦他們了，之後進去 Dcard 期許自己能夠學習更多的知識和技術，讓自己變得更強!! 💪</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Interview/" rel="tag"># Interview</a>
+              <a href="/tags/Dcard/" rel="tag"># Dcard</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/16/index/" rel="prev" title="Database 中 Index 簡介">
+      <i class="fa fa-chevron-left"></i> Database 中 Index 簡介
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9D%A2%E8%A9%A6%E9%81%8E%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">面試過程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%9C%E6%A5%AD%E9%97%9C"><span class="nav-number">1.1.</span> <span class="nav-text">作業關</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%9A%8E%E6%AE%B5%E9%9D%A2%E8%A9%A6"><span class="nav-number">1.2.</span> <span class="nav-text">第一階段面試</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%9A%8E%E6%AE%B5%E9%9D%A2%E8%A9%A6"><span class="nav-number">1.3.</span> <span class="nav-text">第二階段面試</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CEO-%E9%9D%A2%E8%A9%A6"><span class="nav-number">1.4.</span> <span class="nav-text">CEO 面試</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%9C%E6%A5%AD%E9%97%9C-1"><span class="nav-number">2.</span> <span class="nav-text">作業關</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%9A%8E%E6%AE%B5%E9%9D%A2%E8%A9%A6-1"><span class="nav-number">3.</span> <span class="nav-text">第一階段面試</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%9A%8E%E6%AE%B5%E9%9D%A2%E8%A9%A6-1"><span class="nav-number">4.</span> <span class="nav-text">第二階段面試</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CEO-%E9%9D%A2%E8%A9%A6-1"><span class="nav-number">5.</span> <span class="nav-text">CEO 面試</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B8%BD%E7%B5%90"><span class="nav-number">6.</span> <span class="nav-text">總結</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Wei</p>
+  <div class="site-description" itemprop="description">分享自己的所見所聞，紀錄生活雜事、感想和一些技術筆記</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/WeiWeiCheng123" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;WeiWeiCheng123" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wei4105@gmail.com" title="E-Mail → mailto:wei4105@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/ericcheng0519/" title="LinkedIn → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;ericcheng0519&#x2F;" rel="noopener" target="_blank"><i class="fab fa-linkedin fa-fw"></i>LinkedIn</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wei</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
